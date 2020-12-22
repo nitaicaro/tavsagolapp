@@ -84,20 +84,18 @@ getCounterStyle() {
       document.head.append(el)
     }
     return (
-      <div style={{backgroundColor: 'blue'}}>
-      <Box display="flex" alignItems="center" flexDirection="column">
-        <Box display="flex" alignItems="center" >
-          Set max: &nbsp; 
-          <TextField id="standard-basic" label="Standard" onChange={this.onTextChange.bind(this)}>
-            Amount
-          </TextField>
-          <Button variant="contained" color="primary" onClick={this.onClick.bind(this)}>
+      <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', backgroundColor: '#d3beed'}}>
+      <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
+        <Box display="flex" alignItems="center" flexDirection="column">
+          <TextField id="standard-basic" label="Set Max" onChange={this.onTextChange.bind(this)} style={{width: '200px', textAlign: 'center'}}> </TextField>
+          <br/>
+          <Button variant="contained" color="primary" onClick={this.onClick.bind(this)} style={{width: '200px'}}>
             Submit
           </Button>
         </Box>
         <br />
-        <Box>
-        Current business state:
+        <Box display="flex">
+        Current business state: &nbsp;
           <div style={this.getCounterStyle()}>
             {this.state.peopleInside}/{this.state.maxPeople}
           </div>
