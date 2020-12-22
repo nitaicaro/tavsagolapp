@@ -4,6 +4,11 @@ import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 
+/*
+git commit -a -m "initial commit"
+git push heroku master
+heroku open
+*/
 
 class App extends React.Component {
 
@@ -53,7 +58,7 @@ onTextChange(maxInputFieldText) {
 }
 
 componentDidMount() {
-  this.setState({url: 'http://3.23.88.38:8080'}) 
+  this.setState({url: 'http://3.16.206.122:8080'}) 
   this.interval = setInterval(() => this.updateData(), 1000);
 }
 
