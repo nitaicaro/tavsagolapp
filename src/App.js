@@ -88,7 +88,7 @@ getCounterStyle() {
     return (
       <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', backgroundColor: '#d3beed'}}>
       <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
-        <img src={logo} style={{width: '40%' }} />
+        <img src={logo} style={{width: '100%' }} />
         <Box display="flex" alignItems="center" flexDirection="column">
           <TextField id="standard-basic" label="Set Max" onChange={this.onTextChange.bind(this)} style={{width: '200px', textAlign: 'center'}}> </TextField>
           <br/>
