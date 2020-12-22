@@ -3,8 +3,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
+import logo from './logo.png'
+
 /*
-git commit -a -m "bg image"
+git commit -a -m "bg color and styling"
 git push heroku master
 heroku open
 */
@@ -86,6 +88,7 @@ getCounterStyle() {
     return (
       <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', backgroundColor: '#d3beed'}}>
       <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
+        <img src={logo} style={{width: '40%' }} />
         <Box display="flex" alignItems="center" flexDirection="column">
           <TextField id="standard-basic" label="Set Max" onChange={this.onTextChange.bind(this)} style={{width: '200px', textAlign: 'center'}}> </TextField>
           <br/>
