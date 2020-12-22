@@ -98,7 +98,7 @@ getCounterStyle() {
         </Box>
         <br />
         <Box display="flex">
-        Current business state: &nbsp;
+        Current state: &nbsp;
           <div style={this.getCounterStyle()}>
             {this.state.peopleInside}/{this.state.maxPeople}
           </div>
