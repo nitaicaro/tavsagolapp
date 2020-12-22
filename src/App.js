@@ -3,9 +3,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
-
 /*
-git commit -a -m "initial commit"
+git commit -a -m "bg image"
 git push heroku master
 heroku open
 */
@@ -78,16 +77,16 @@ getCounterStyle() {
 }
 
   render() {
-    if (window.location.protocol.indexOf('https') == 0){
+    if (window.location.protocol.indexOf('https') === 0){
       var el = document.createElement('meta')
       el.setAttribute('http-equiv', 'Content-Security-Policy')
       el.setAttribute('content', 'upgrade-insecure-requests')
       document.head.append(el)
     }
     return (
-      <div>
-      <Box display="flex" alignItems="center" flexDirection="column" bgcolor="background.paper">
-        <Box bgcolor="grey.300" display="flex" alignItems="center" >
+      <div style={{backgroundColor: 'blue'}}>
+      <Box display="flex" alignItems="center" flexDirection="column">
+        <Box display="flex" alignItems="center" >
           Set max: &nbsp; 
           <TextField id="standard-basic" label="Standard" onChange={this.onTextChange.bind(this)}>
             Amount
@@ -97,7 +96,7 @@ getCounterStyle() {
           </Button>
         </Box>
         <br />
-        <Box bgcolor="grey.300">
+        <Box>
         Current business state:
           <div style={this.getCounterStyle()}>
             {this.state.peopleInside}/{this.state.maxPeople}
