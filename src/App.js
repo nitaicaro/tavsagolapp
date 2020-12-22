@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import logo from './logo.png'
+import './index.css';
 
 /*
 git commit -a -m "bg color and styling"
@@ -97,8 +98,8 @@ getCounterStyle() {
           </Button>
         </Box>
         <br />
-        <Box display="flex">
-        Current state: &nbsp;
+        <Box display="flex" style={{fontFamily: 'stateFont'}}>
+        CURRENT STATE: &nbsp;
           <div style={this.getCounterStyle()}>
             {this.state.peopleInside}/{this.state.maxPeople}
           </div>
