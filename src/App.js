@@ -60,7 +60,7 @@ onTextChange(maxInputFieldText) {
 }
 
 componentDidMount() {
-  this.setState({url: 'http://3.16.206.122:8080'}) 
+  this.setState({url: 'http://3.129.64.0:8080'}) 
   this.interval = setInterval(() => this.updateData(), 1000);
 }
 
