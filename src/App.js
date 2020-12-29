@@ -14,7 +14,7 @@ import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "entry histogram"
+git commit -a -m "bug fixes"
 git push heroku master
 heroku open
 */
