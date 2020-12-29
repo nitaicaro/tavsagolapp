@@ -95,7 +95,7 @@ componentWillUnmount() {
 }
 
 updateData() {
-  // this.performGetRequest(this.state.url);
+  this.performGetRequest(this.state.url);
 }
 
 getCounterStyle() {
