@@ -1,6 +1,12 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import Table from '@material-ui/core/Table';
+import Paper from '@material-ui/core/Paper';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import logo from './logo.png'
@@ -27,7 +33,7 @@ constructor(props){
     'peopleInside': -1,
     'maxPeople': -1,
     'url': '',
-    'log': ''
+    'log': {}
   };
 }
 
@@ -42,6 +48,15 @@ performGetRequest(url){
   });
 }
 
+getHistory(url) {
+  let data = { 'history': '' };
+  this.performPostRequest(url, data);
+}
+
+fillHistogram(history) {
+
+}
+
 performPostRequest(url, data){
   let config={
     headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
@@ -49,7 +64,9 @@ performPostRequest(url, data){
   axios.post(url, data, config).then(response => {
     if (response.data === "MAX UPDATED") {
       alert('MAX successfully updated to ' + data.max);
-    }
+    } else {
+      this.setState({log: (response.data[0])});
+    } 
   });
 }
 
@@ -67,7 +84,9 @@ onTextChange(maxInputFieldText) {
 }
 
 componentDidMount() {
-  this.setState({url: 'http://3.129.64.0:8080'}) 
+  let url = 'http://3.138.173.166:8080';
+  this.getHistory(url);
+  this.setState({url: url}) 
   this.interval = setInterval(() => this.updateData(), 1000);
 }
 
@@ -76,7 +95,7 @@ componentWillUnmount() {
 }
 
 updateData() {
-  this.performGetRequest(this.state.url);
+  // this.performGetRequest(this.state.url);
 }
 
 getCounterStyle() {
@@ -94,9 +113,9 @@ getCounterStyle() {
       document.head.append(el)
     }
     return (
-      <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', width: '100vh', backgroundColor: '#d3beed'}}>
-      <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
-        <img src={logo} style={{width: '100%' }} />
+      <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', backgroundColor: '#d3beed'}}>
+      <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', width:'100%', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
+        <img src={logo} style={{width: '50%' }} />
         <Box display="flex" alignItems="center" flexDirection="column">
           <TextField id="standard-basic" label="Set Max" onChange={this.onTextChange.bind(this)} style={{width: '200px', textAlign: 'center'}}> </TextField>
           <br/>
@@ -112,17 +131,22 @@ getCounterStyle() {
           </div>
         </Box>
         <br/>
-        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'70%', overflowY: 'scroll', backgroundColor: 'white'}}>
+        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%', overflowY: 'scroll', backgroundColor: 'white'}}>
           <b>ACCESS VIOLATION HISTORY</b>
         </Box>
-        <Box style={{ height: '20%', width:'70%', overflowY: 'scroll', backgroundColor: 'white'}}>
-          1. mook
-          <br/>
-          2. pook
-          <br/>
-          3. dook
-          <br/>
-          4. jook
+        <Box style={{ height: '20%', width:'100%', overflowY: 'scroll', backgroundColor: 'white'}}>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+              {Object.keys(this.state.log).map(date => (
+              <TableRow>
+                <TableCell>{date}</TableCell>
+                <TableCell>{this.state.log[date]}</TableCell>
+              </TableRow>
+            ))}
+              </TableHead>
+            </Table>
+          </TableContainer>
         </Box>
       </Box>
     </div>
@@ -131,3 +155,7 @@ getCounterStyle() {
 }
 
 export default App;
+
+/*
+        
+        */
