@@ -65,7 +65,7 @@ performPostRequest(url, data){
     if (response.data === "MAX UPDATED") {
       alert('MAX successfully updated to ' + data.max);
     } else {
-      this.setState({log: (response.data[0])});
+      this.setState({log: (response.data)});
     } 
   });
 }
@@ -132,18 +132,24 @@ getCounterStyle() {
         </Box>
         <br/>
         <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%', overflowY: 'scroll', backgroundColor: 'white'}}>
-          <b>ACCESS VIOLATION HISTORY</b>
+          <b>ACCESS VIOLATION HISTORY</b> 
+          &nbsp;
+          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
+            (refresh)
+          </u>
         </Box>
         <Box style={{ height: '20%', width:'100%', overflowY: 'scroll', backgroundColor: 'white'}}>
           <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-              {Object.keys(this.state.log).map(date => (
-              <TableRow>
-                <TableCell>{date}</TableCell>
-                <TableCell>{this.state.log[date]}</TableCell>
-              </TableRow>
-            ))}
+            <Table >
+              <TableHead >
+              {Object.entries(this.state.log).map(entry => (
+                  Object.keys(entry[1]).map((date) => (
+                    <TableRow>
+                      <TableCell>{date}</TableCell>
+                      <TableCell>{entry[1][date]}</TableCell>
+                    </TableRow>
+                  ))
+                ))}
               </TableHead>
             </Table>
           </TableContainer>
@@ -157,5 +163,7 @@ getCounterStyle() {
 export default App;
 
 /*
-        
+        Object.keys(entry).map(date => (
+                      
+                    ))
         */
