@@ -151,11 +151,7 @@ getCounterStyle() {
         <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%'}}>
           <b>ACCESS VIOLATION HISTORY</b> 
           &nbsp;
-          <br/>
-          <br/>
-          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
-            (refresh)
-          </u>
+
         </Box>
         <Box style={{height: '300px', backgroundColor: 'white', overflowY: 'scroll'}}>
           <TableContainer>
@@ -173,20 +169,25 @@ getCounterStyle() {
             </Table>
           </TableContainer>
         </Box>
-        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%'}}>
+        <Box display="flex" justifyContent="center" style={{ height: '20%', width:'100%'}}>
           <b>ENTRY HISTOGRAM</b> 
           &nbsp;
           <br/>
           <br/>
         </Box>
-        <Box display="flex" alignItems="center" style={{overflowX: 'scroll', width:'100%'}}>
+        <Box display="flex" justifyContent="start" style={{overflowX: 'scroll', width:'100%'}}>
           <Histogram
             xLabels={['00','01','02', '03', '04', '05', '06', '07', '08', '09', '10', '11','12', '13','14','15','16','17','18','19','20','21','22','23']}
             yValues={this.state.times}
             height='200'
-            width='800'
+            width='1800'
             options={{fillColor: '#000000', strokeColor: '#000000' }}
           />
+        </Box>
+        <Box>
+          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
+              (refresh all stats)
+          </u>
         </Box>
       </Box>
     </div>
