@@ -81,8 +81,6 @@ performPostRequest(url, data){
   axios.post(url, data, config).then(response => {
     if (response.data === "MAX UPDATED") {
       alert('MAX successfully updated to ' + data.max);
-    } else {
-      this.setState({log: (response.data)});
     } 
   });
 }
@@ -181,12 +179,12 @@ getCounterStyle() {
           <br/>
           <br/>
         </Box>
-        <Box>
+        <Box display="flex" alignItems="center" style={{overflowX: 'scroll', width:'100%'}}>
           <Histogram
             xLabels={['00','01','02', '03', '04', '05', '06', '07', '08', '09', '10', '11','12', '13','14','15','16','17','18','19','20','21','22','23']}
             yValues={this.state.times}
-            width='800'
             height='200'
+            width='800'
             options={{fillColor: '#000000', strokeColor: '#000000' }}
           />
         </Box>
@@ -197,9 +195,3 @@ getCounterStyle() {
 }
 
 export default App;
-
-/*
-        Object.keys(entry).map(date => (
-                      
-                    ))
-        */
