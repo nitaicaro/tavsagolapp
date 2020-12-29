@@ -94,7 +94,7 @@ getCounterStyle() {
       document.head.append(el)
     }
     return (
-      <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', backgroundColor: '#d3beed'}}>
+      <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', width: '100vh', backgroundColor: '#d3beed'}}>
       <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
         <img src={logo} style={{width: '100%' }} />
         <Box display="flex" alignItems="center" flexDirection="column">
