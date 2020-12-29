@@ -14,7 +14,7 @@ import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "bug fixes"
+git commit -a -m "fixed scrolling issue"
 git push heroku master
 heroku open
 */
