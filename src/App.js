@@ -7,10 +7,16 @@ import logo from './logo.png'
 import './index.css';
 
 /*
-git commit -a -m "bg color and styling"
+git commit -a -m "history log"
 git push heroku master
 heroku open
 */
+
+/*
+ * over max 
+ * invalid temp
+ * didnt measure temp
+ */
 
 class App extends React.Component {
 
@@ -21,6 +27,7 @@ constructor(props){
     'peopleInside': -1,
     'maxPeople': -1,
     'url': '',
+    'log': ''
   };
 }
 
@@ -103,6 +110,19 @@ getCounterStyle() {
           <div style={this.getCounterStyle()}>
             {this.state.peopleInside}/{this.state.maxPeople}
           </div>
+        </Box>
+        <br/>
+        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'70%', overflowY: 'scroll', backgroundColor: 'white'}}>
+          <b>ACCESS VIOLATION HISTORY</b>
+        </Box>
+        <Box style={{ height: '20%', width:'70%', overflowY: 'scroll', backgroundColor: 'white'}}>
+          1. mook
+          <br/>
+          2. pook
+          <br/>
+          3. dook
+          <br/>
+          4. jook
         </Box>
       </Box>
     </div>
