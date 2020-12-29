@@ -10,10 +10,11 @@ import TableCell from '@material-ui/core/TableCell';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import logo from './logo.png'
+import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "history log"
+git commit -a -m "entry histogram"
 git push heroku master
 heroku open
 */
@@ -33,7 +34,8 @@ constructor(props){
     'peopleInside': -1,
     'maxPeople': -1,
     'url': '',
-    'log': {}
+    'log': {},
+    'times': {}
   };
 }
 
@@ -50,11 +52,26 @@ performGetRequest(url){
 
 getHistory(url) {
   let data = { 'history': '' };
-  this.performPostRequest(url, data);
+  let config={
+    headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
+  }
+  axios.post(url, data, config).then(response => {
+      this.setState({log: (response.data)});
+  });
 }
 
-fillHistogram(history) {
-
+getTimes(url) {
+  let data = { 'times': '' };
+  let config={
+    headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
+  }
+  axios.post(url, data, config).then(response => {
+      var times = [];
+      Object.keys(response.data).forEach(time => {
+        times.push(response.data[time][time]);
+      })
+      this.setState({times: times});
+  });
 }
 
 performPostRequest(url, data){
@@ -86,6 +103,7 @@ onTextChange(maxInputFieldText) {
 componentDidMount() {
   let url = 'http://3.138.173.166:8080';
   this.getHistory(url);
+  this.getTimes(url);
   this.setState({url: url}) 
   this.interval = setInterval(() => this.updateData(), 1000);
 }
@@ -95,7 +113,7 @@ componentWillUnmount() {
 }
 
 updateData() {
-  this.performGetRequest(this.state.url);
+  // this.performGetRequest(this.state.url);
 }
 
 getCounterStyle() {
@@ -156,6 +174,21 @@ getCounterStyle() {
               </TableHead>
             </Table>
           </TableContainer>
+        </Box>
+        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%'}}>
+          <b>ENTRY HISTOGRAM</b> 
+          &nbsp;
+          <br/>
+          <br/>
+        </Box>
+        <Box>
+          <Histogram
+            xLabels={['00','01','02', '03', '04', '05', '06', '07', '08', '09', '10', '11','12', '13','14','15','16','17','18','19','20','21','22','23']}
+            yValues={this.state.times}
+            width='800'
+            height='200'
+            options={{fillColor: '#000000', strokeColor: '#000000' }}
+          />
         </Box>
       </Box>
     </div>
