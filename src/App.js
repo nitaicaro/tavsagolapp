@@ -112,6 +112,7 @@ getCounterStyle() {
       el.setAttribute('content', 'upgrade-insecure-requests')
       document.head.append(el)
     }
+    document.body.style.overflow = "hidden";
     return (
       <div display="flex" justifyContent="center" alignItems="center" style={{height: '100vh', backgroundColor: '#d3beed'}}>
       <Box display="flex" alignItems="center" flexDirection="column" style={{position: 'absolute', width:'100%', left:'50%', top:'50%', transform: 'translate(-50%,-50%)'}}>
@@ -142,7 +143,7 @@ getCounterStyle() {
         </Box>
         <Box style={{height: '300px', backgroundColor: 'white', overflowY: 'scroll'}}>
           <TableContainer>
-            <Table >
+            <Table>
               <TableHead >
               {Object.entries(this.state.log).map(entry => (
                   Object.keys(entry[1]).map((date) => (
