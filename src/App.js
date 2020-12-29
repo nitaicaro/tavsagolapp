@@ -131,15 +131,17 @@ getCounterStyle() {
           </div>
         </Box>
         <br/>
-        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%', overflowY: 'scroll', backgroundColor: 'white'}}>
+        <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%'}}>
           <b>ACCESS VIOLATION HISTORY</b> 
           &nbsp;
+          <br/>
+          <br/>
           <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
             (refresh)
           </u>
         </Box>
-        <Box style={{ height: '20%', width:'100%', overflowY: 'scroll', backgroundColor: 'white'}}>
-          <TableContainer component={Paper}>
+        <Box style={{height: '300px', backgroundColor: 'white', overflowY: 'scroll'}}>
+          <TableContainer>
             <Table >
               <TableHead >
               {Object.entries(this.state.log).map(entry => (
