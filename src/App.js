@@ -67,8 +67,8 @@ getTimes(url) {
   }
   axios.post(url, data, config).then(response => {
       var times = [];
-      Object.keys(response.data).forEach(time => {
-        times.push(response.data[time][time]);
+      Object.keys(Object.keys(response.data[0])).forEach(time => {
+        times.push(response.data[0][time]);
       })
       this.setState({times: times});
   });
