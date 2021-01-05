@@ -99,7 +99,7 @@ onTextChange(maxInputFieldText) {
 }
 
 componentDidMount() {
-  let url = 'http://3.138.173.166:8080';
+  let url = 'http://3.138.103.244:8080';
   this.getHistory(url);
   this.getTimes(url);
   this.setState({url: url}) 
