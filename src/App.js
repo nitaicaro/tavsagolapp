@@ -14,7 +14,7 @@ import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "fixed scrolling issue"
+git commit -a -m "changed ip"
 git push heroku master
 heroku open
 */
@@ -71,6 +71,26 @@ getTimes(url) {
         times.push(response.data[0][time]);
       })
       this.setState({times: times});
+  });
+}
+
+resetHistory(url) {
+  let data = { 'reset_history': '' };
+  let config={
+    headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
+  }
+  axios.post(url, data, config).then(response => {
+    window.location.reload(false);
+  });
+}
+
+resetHistogram(url) {
+  let data = { 'reset_histogram': '' };
+  let config={
+    headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
+  }
+  axios.post(url, data, config).then(response => {
+    window.location.reload(false);
   });
 }
 
@@ -146,7 +166,26 @@ getCounterStyle() {
             {this.state.peopleInside}/{this.state.maxPeople}
           </div>
         </Box>
+        <Box>
         <br/>
+        </Box>
+        <Box display="flex" justifyContent="center" style={{ height: '20%', width:'100%'}}>
+          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => {if(window.confirm('Reset all history?')){this.resetHistory(this.state.url)};}}>
+              reset history
+          </u>
+          &nbsp; | &nbsp; 
+          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => {if(window.confirm('Reset histogram?')){this.resetHistogram(this.state.url)};}}>
+              reset histogram
+          </u>
+          &nbsp; | &nbsp; 
+          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
+              refresh all stats
+          </u>
+        </Box>
+        <Box>
+        <br/>
+        <br/>
+        </Box>
         <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '20%', width:'100%'}}>
           <b>ACCESS VIOLATION HISTORY</b> 
           &nbsp;
@@ -168,6 +207,10 @@ getCounterStyle() {
             </Table>
           </TableContainer>
         </Box>
+        <Box>
+        <br/>
+        <br/>
+        </Box>
         <Box display="flex" justifyContent="center" style={{ height: '20%', width:'100%'}}>
           <b>ENTRY HISTOGRAM</b> 
           &nbsp;
@@ -182,11 +225,6 @@ getCounterStyle() {
             width='1800'
             options={{fillColor: '#000000', strokeColor: '#000000' }}
           />
-        </Box>
-        <Box>
-          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
-              (refresh all stats)
-          </u>
         </Box>
       </Box>
     </div>
