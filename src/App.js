@@ -14,7 +14,7 @@ import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "changed ip"
+git commit -a -m "styling"
 git push heroku master
 heroku open
 */
@@ -185,7 +185,10 @@ getCounterStyle() {
           &nbsp;
 
         </Box>
-        <Box style={{height: '300px', backgroundColor: 'white', overflowY: 'scroll'}}>
+        <Box>
+        <br/>
+        </Box>
+        <Box style={{height: '300px', width: '550px', backgroundColor: 'white', overflowY: 'scroll'}}>
           <TableContainer>
             <Table>
               <TableHead >
@@ -208,8 +211,9 @@ getCounterStyle() {
         <Box display="flex" justifyContent="center" style={{ height: '20%', width:'100%'}}>
           <b>ENTRY HISTOGRAM</b> 
           &nbsp;
-          <br/>
-          <br/>
+        </Box>
+        <Box>
+        <br/>
         </Box>
         <Box display="flex" justifyContent="start" style={{overflowX: 'scroll', width:'100%'}}>
           <Histogram
