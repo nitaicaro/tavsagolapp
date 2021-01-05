@@ -19,12 +19,6 @@ git push heroku master
 heroku open
 */
 
-/*
- * over max 
- * invalid temp
- * didnt measure temp
- */
-
 class App extends React.Component {
 
 constructor(props){
