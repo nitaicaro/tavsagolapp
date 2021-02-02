@@ -14,7 +14,7 @@ import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "ip updated"
+git commit -a -m "reset counter button added"
 git push heroku master
 */
 
