@@ -77,6 +77,17 @@ resetHistory(url) {
   });
 }
 
+resetCounter(url) {
+  let data = { 'reset_counter': '' };
+  let config={
+    headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
+  }
+  axios.post(url, data, config).then(response => {
+    window.location.reload(false);
+  });
+}
+
+
 resetHistogram(url) {
   let data = { 'reset_histogram': '' };
   let config={
@@ -173,6 +184,10 @@ getCounterStyle() {
           &nbsp; | &nbsp; 
           <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => window.location.reload(false)}>
               refresh all stats
+          </u>
+          &nbsp; | &nbsp; 
+          <u style={{color: 'blue', cursor: 'pointer'}} onClick={() => {if(window.confirm('Reset counter?')){this.resetCounter(this.state.url)};}}>
+              reset counter
           </u>
         </Box>
         <Box>
