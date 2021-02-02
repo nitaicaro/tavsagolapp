@@ -14,9 +14,8 @@ import Histogram from 'react-chart-histogram';
 import './index.css';
 
 /*
-git commit -a -m "refresh buttons"
+git commit -a -m "ip updated"
 git push heroku master
-heroku open
 */
 
 class App extends React.Component {
