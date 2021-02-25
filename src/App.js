@@ -123,7 +123,7 @@ onTextChange(maxInputFieldText) {
 }
 
 componentDidMount() {
-  let url = 'http://13.58.30.199:8080';
+  let url = 'http://18.222.26.155:8080';
   this.getHistory(url);
   this.getTimes(url);
   this.setState({url: url}) 
